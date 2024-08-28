@@ -14,7 +14,7 @@ const Chat = () => {
     const navigate = useNavigate();
     const { search } = useLocation()
     const [userParams, setUserParams] = useState({room: '', user: ''})
-    const [users, setUsers] = useState(0);
+    const [usersCount, setUsersCount] = useState(0);
     const [messages, setMessages] = useState([])
     const [message, setMessage] = useState('')
     const [isEmojiPickerOpen, setEmojiPickerOpen] = useState(false)
@@ -49,7 +49,7 @@ const Chat = () => {
 
     useEffect(() => {
         socket.on("room", ({ data: { users } }) => {
-            setUsers(users.length);
+            setUsersCount(users.length);
         });
     }, []);
 
@@ -57,7 +57,7 @@ const Chat = () => {
         <div className={styles.wrap}>
             <div className={styles.header}>
                 <div className={styles.title}>{userParams.room}</div>
-                <div className={styles.users}>{users} users in this room</div>
+                <div className={styles.users}>{usersCount} users in this room now</div>
                 <button className={styles.left} onClick={leftRoom}>
                     Left the room
                 </button>
