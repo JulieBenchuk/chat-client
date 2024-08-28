@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import io from 'socket.io-client'
 import {useLocation, useNavigate} from "react-router-dom";
-import icon from '../images/publish-icon.svg'
+import icon from '../images/message.svg'
 import styles from '../styles/Chat.module.css'
 import EmojiPicker from "emoji-picker-react";
 import Messages from "./Messages";
@@ -13,37 +13,37 @@ const Chat = () => {
 
     const navigate = useNavigate();
     const { search } = useLocation()
-    const [params, setParams] = useState({room: '', user: ''})
-    const [state, setState] = useState([])
-    const [message, setMessage] = useState('')
-    const [isOpen, setOpen] = useState(false)
+    const [userParams, setUserParams] = useState({room: '', user: ''})
     const [users, setUsers] = useState(0);
+    const [messages, setMessages] = useState([])
+    const [message, setMessage] = useState('')
+    const [isEmojiPickerOpen, setEmojiPickerOpen] = useState(false)
 
     const handleChange = ({ target: { value } }) => setMessage(value);
     const onEmojiClick = ({ emoji }) => setMessage(`${message} ${emoji}`);
     const leftRoom = () => {
-        socket.emit("leftRoom", { params });
+        socket.emit("leftRoom", { userParams });
         navigate("/");
     }
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (!message) return;
+        if (!message.trim()) return;
 
-        socket.emit("sendMessage", { message, params });
+        socket.emit("sendMessage", { message, userParams });
 
         setMessage("");
     };
 
     useEffect(() => {
         const searchParams = Object.fromEntries(new URLSearchParams(search))
-        setParams(searchParams)
+        setUserParams(searchParams)
         socket.emit('join', searchParams)
     }, [search]);
 
     useEffect(() => {
         socket.on('message', ({data}) => {
-            setState((_state) => ([..._state, data]))
+            setMessages((_state) => ([..._state, data]))
         })
     }, []);
 
@@ -53,12 +53,10 @@ const Chat = () => {
         });
     }, []);
 
-    console.log(state)
-
     return (
         <div className={styles.wrap}>
             <div className={styles.header}>
-                <div className={styles.title}>{params.room}</div>
+                <div className={styles.title}>{userParams.room}</div>
                 <div className={styles.users}>{users} users in this room</div>
                 <button className={styles.left} onClick={leftRoom}>
                     Left the room
@@ -66,7 +64,7 @@ const Chat = () => {
             </div>
 
             <div className={styles.messages}>
-                <Messages messages={state} name={params.name}/>
+                <Messages messages={messages} name={userParams.name}/>
             </div>
 
             <form className={styles.form} onSubmit={handleSubmit}>
@@ -82,9 +80,9 @@ const Chat = () => {
                     />
                 </div>
                 <div className={styles.emoji}>
-                    <img src={icon} alt="" onClick={() => setOpen(!isOpen)}/>
+                    <img src={icon} alt="" onClick={() => setEmojiPickerOpen(!isEmojiPickerOpen)}/>
 
-                    {isOpen && (
+                    {isEmojiPickerOpen && (
                         <div className={styles.emojies}>
                             <EmojiPicker onEmojiClick={onEmojiClick}/>
                         </div>

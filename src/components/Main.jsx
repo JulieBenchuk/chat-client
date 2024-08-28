@@ -33,7 +33,7 @@ const Main = () => {
                        <input type="text" name={FIELDS.ROOM} value={values[ROOM]} className={style.input} onChange={handleChange} autoComplete={'off'} placeholder={'Room'}/>
                    </div>
 
-                   <Link to={`/chat?name=${values[NAME]}&room${values[ROOM]}`} className={style.group} onClick={handleClick}>
+                   <Link to={`/chat?name=${values[NAME]}&room=${values[ROOM]}`} className={style.group} onClick={handleClick}>
                        <button type={'submit'} className={style.button}>
                            Sign In
                        </button>
