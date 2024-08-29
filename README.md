@@ -1,70 +1,91 @@
-# Getting Started with Create React App
+# Chat Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+This is a real-time chat application built with React. The app features a main page where users can input their name and choose a chat room. After entering a room, users can chat with others in the same room. The application also includes notifications for when users join or leave a room.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Main Page**: Users can enter their name and select a room to join.
+- **Chat Rooms**: Multiple users can join and interact in the same room.
+- **Real-Time Notifications**: Receive notifications when users join or leave a room.
+- **Emoji Picker**: Includes an emoji picker for enhanced messaging experience.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technologies
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **React**: The core library for building the user interface.
+- **Socket.IO**: Provides real-time communication between clients and the server.
+- **React Router**: Handles routing within the application.
+- **Emoji Picker**: Allows users to add emojis to their messages.
 
-### `npm test`
+## Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To get started with this project, follow these steps:
 
-### `npm run build`
+1. **Clone the repository:**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   ```bash
+   https://github.com/JulieBenchuk/chat-client.git
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. **Navigate to the project directory:**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    ```bash
+    cd chat-client
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. **Install dependencies:**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    ```bash
+    npm install
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Usage
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. **Start the development server:**
 
-## Learn More
+    ```bash
+    npm start
+   
+2. **Open your browser and navigate to:**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    ```bash
+    http://localhost:3000
+   
+3. **Enter your name and select a room to start chatting.**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Scripts
 
-### Code Splitting
+- npm start: Runs the app in development mode.
+- npm build: Builds the app for production to the build folder.
+- npm test: Runs the tests for the app.
+- npm eject: Removes the single build dependency from your project.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Dependencies
 
-### Analyzing the Bundle Size
+The project relies on the following packages:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- @testing-library/jest-dom: For testing React components.
+- @testing-library/react: For rendering and testing React components.
+- @testing-library/user-event: For simulating user interactions in tests.
+- emoji-picker-react: To add emoji support.
+- react: The main library for building the UI.
+- react-dom: Provides DOM-specific methods.
+- react-router-dom: For handling routing.
+- socket.io-client: For real-time communication with the server.
+- web-vitals: For measuring performance metrics.
 
-### Making a Progressive Web App
+## Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+If you want to contribute to the project, please follow these steps:
 
-### Advanced Configuration
+- Fork the repository.
+- Create a new branch (git checkout -b feature-branch).
+- Make your changes and commit them (git commit -am 'Add new feature').
+- Push to the branch (git push origin feature-branch).
+- Open a pull request.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Acknowledgements
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- React - JavaScript library for building user interfaces.
+- Socket.IO - Real-time communication library.
+- React Router - Declarative routing for React.js.
+- Emoji Picker - Emoji picker component for React.
