@@ -6,7 +6,7 @@ import styles from '../styles/Chat.module.css'
 import EmojiPicker from 'emoji-picker-react'
 import Messages from './Messages'
 
-const socket = io.connect('http://localhost:5001')
+const socket = io.connect('https://chat-server-0yqw.onrender.com')
 
 const Chat = () => {
     const navigate = useNavigate()
